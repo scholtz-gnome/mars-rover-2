@@ -6,6 +6,7 @@
     "prebuild": "rimraf ./dist",
     "build": "tsc",
     "app": "npm run build && node ./dist/src/main.js",
+    "app:dev": "ts-node-dev --respawn --transpile-only ./src/main.ts",
     "pretest": "npm run build",
     "test": "jest --runInBand --config jest.config.ts",
     "test:watch": "jest --watchAll --runInBand --config jest.config.ts",
@@ -35,6 +36,7 @@
     "jest": "^27.0.4",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.3",
-    "ts-node": "^10.0.0"
+    "ts-node": "^10.0.0",
+    "ts-node-dev": "^1.1.8"
   }
 }
