@@ -1,9 +1,65 @@
-# Typescript Base
-A base typescript project with a testing environment set up.
+# Mars Rover v.2
 
-## Set up
-Run `npm install` in your CLI at the root of the directory. This will install `typescript` as a dependency, `jest`, `rimraf`, `ts-node` and `ts-jest` as dev-dependencies and `@types/node` and `@types/jest` as type declarations.
+A solution to the Mars Rover challenge for Platform45.
 
-## NPM Scripts
-- `npm run build` runs two commands sequentially. The first runs `rimraf` which executes the Unix commands `rm -rf` on the `./dist` directory where the compiled JS sits. The second command then compiles your TypeScript code into JS and puts it into a new `dist` directory at the root of the project.
-- `npm test` first runs the `pretest` script which runs `npm run build`. Then it runs the `jest` testing environment in `--watchAll` mode. Based on `jest.config.ts` at the root of the directory, the testing environment is set to `node`, the preset is set to `ts-jest`, allowing you to test TypeScript code and code coverage is collected and stored within the `tests` directory. 
+## Setting up the app
+
+To install all relevant dependencies, run
+
+```bash
+npm ci
+```
+
+## Running the app
+
+Coming soon...
+
+```bash
+npm run app
+```
+
+## Running the unit tests
+
+To run the unit tests, run
+
+```bash
+npm run test
+```
+
+To run them with coverage, run
+
+```bash
+npm run test:cov
+```
+
+The coverage report for the units tests is stored in the `coverage` directory.
+
+To run the tests in watch mode, run
+
+```bash
+npm run test:watch
+```
+
+## Running the e2e tests
+
+The e2e test tests a typical user journey through the app.
+
+To run the e2e tests, run
+
+```bash
+npm run test:e2e
+```
+
+To run the e2e tests with coverage, run
+
+```bash
+npm run test:e2e:cov
+```
+
+The coverage report is stored in the `tests/coverage` directory.
+
+To run the e2e tests in watch mode, run
+
+```bash
+npm run test:e2e:watch
+```

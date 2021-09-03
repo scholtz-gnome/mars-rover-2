@@ -1,27 +1,31 @@
 {
   "name": "typescript-base",
   "version": "1.0.0",
-  "description": "A base typescript project with a testing environment set up.",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
+  "description": "A solution to the Mars Rover coding challenge, in TypeScript.",
   "scripts": {
-    "build": "rimraf ./dist && tsc",
+    "prebuild": "rimraf ./dist",
+    "build": "tsc",
+    "app": "npm run build && node ./dist/src/main.js",
     "pretest": "npm run build",
-    "test": "jest --watchAll --runInBand"
+    "test": "jest --runInBand --config jest.config.ts",
+    "test:watch": "jest --watchAll --runInBand --config jest.config.ts",
+    "test:cov": "jest --coverage --runInBand --config jest.config.ts",
+    "pretest:e2e": "npm run build",
+    "test:e2e": "jest --runInBand --config ./tests/jest-e2e.json",
+    "test:e2e:watch": "jest --watch --runInBand --config ./tests/jest-e2e.json",
+    "test:e2e:cov": "jest --coverage --runInBand --config ./tests/jest-e2e.json"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scholtz-gnome/typescript-base.git"
+    "url": "git+https://github.com/scholtz-gnome/mars-rover-2.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/scholtz-gnome/typescript-base/issues"
+    "url": "https://github.com/scholtz-gnome/mars-rover-2/issues"
   },
-  "homepage": "https://github.com/scholtz-gnome/typescript-base#readme",
+  "homepage": "https://github.com/scholtz-gnome/mars-rover-2#readme",
   "dependencies": {
     "typescript": "^4.3.3"
   },

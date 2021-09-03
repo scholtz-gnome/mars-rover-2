@@ -1,8 +1,9 @@
 export default {
   testEnvironment: "node",
   preset: "ts-jest",
-  testRegex: "(/dist/tests/.*|(\\.|/)(test))\\.[t]s?$",
+  testRegex: "(/dist/tests/.*|(\\.|/)(spec))\\.[t]s?$",
   verbose: true,
-  collectCoverage: true,
-  coverageDirectory: __dirname + "/tests/coverage",
+  coveragePathIgnorePatterns: [".*spec\\.ts"],
+  collectCoverageFrom: ["./src/**/*.(t|j)s"],
+  coverageDirectory: "coverage",
 };
