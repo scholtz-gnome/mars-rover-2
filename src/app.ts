@@ -1,5 +1,12 @@
+import { Rover } from "./interfaces/rover.interface";
+
 export class App {
-  play(): string {
-    return "Let's play!";
+  constructor(
+    private readonly plateau: Plateau,
+    private readonly rovers: Rover[]
+  ) {}
+
+  startMission(): void {
+    console.log(this.plateau, this.rovers);
   }
 }
