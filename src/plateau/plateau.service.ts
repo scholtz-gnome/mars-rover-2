@@ -1,6 +1,8 @@
 import { Prompt } from "prompt-sync";
 
 export class PlateauService {
+  constructor(private readonly prompt: Prompt) {}
+
   formatPlateau(coords: string[][]): Plateau {
     const formattedPlateau = {
       x: Number(coords[0][1].trim()),
@@ -10,8 +12,8 @@ export class PlateauService {
     return formattedPlateau;
   }
 
-  receivePlateau(p: Prompt): Plateau {
-    const coords = p(
+  receivePlateau(): Plateau {
+    const coords = this.prompt(
       "Enter the top right coordinates of the plateau (Eg. x: 5, y: 4): "
     ).trim();
 

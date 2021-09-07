@@ -1,18 +1,26 @@
 import prompt from "prompt-sync";
 import { terminal } from "terminal-kit";
 import { App } from "./app";
+import { InstructionsService } from "./instructions/instructions.service";
 import { PlateauService } from "./plateau/plateau.service";
 import { RoversService } from "./rovers/rovers.service";
 
 const p = prompt();
-const roversService = new RoversService();
-const plateauService = new PlateauService();
-
+const plateauService = new PlateauService(p);
+const instructionsService = new InstructionsService(p, terminal);
+const roversService = new RoversService(
+  plateauService,
+  instructionsService,
+  p,
+  terminal
+);
 const commander = p("Please enter your name: ");
-const plateau = plateauService.receivePlateau(p);
-const roverCount = roversService.countRovers(commander, p, terminal);
-const rovers = roversService.createRovers(roverCount, commander, p, terminal);
+const app = new App(plateauService, roversService, commander);
 
-new App(plateau, rovers);
+const mission = app.generateMission();
+console.log("Mission Summary", mission, "\n----------------\n");
 
-console.log(rovers);
+const report = app.startMission(mission);
+console.log("Mission Status", report.status, "\n----------------\n");
+console.log("Mission Success", report.success, "\n----------------\n");
+console.log(report.rovers, "\n----------------\n");
