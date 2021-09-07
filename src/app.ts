@@ -76,8 +76,8 @@ export class App {
     return false;
   }
 
-  startMission(mission: Mission): Partial<MissionReport> {
-    let initialReport: Partial<MissionReport> = {
+  startMission(mission: Mission): MissionReport {
+    let initialReport: MissionReport = {
       status: MissionStatus.IN_PROGRESS,
       success: true,
       rovers: [],
